@@ -1,8 +1,0 @@
-{
-  "devDependencies": {
-    "vitest": "^2.1.4"
-  },
-  "dependencies": {
-    "react-router": "^6.27.0"
-  }
-}
