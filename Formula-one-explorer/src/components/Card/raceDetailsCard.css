@@ -1,0 +1,70 @@
+.cardContainer {
+  width: 80%;
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+  padding: 2rem 1rem;
+}
+
+.card {
+  width: 30%;
+  background-color: rgb(201, 197, 193);
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+}
+
+.cardImg {
+  width: 85%;
+  height: 100%;
+  background-image: url("../../assets/images/F1BG.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border-radius: 0.5rem;
+}
+
+.cardTitle {
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  text-align: left;
+  margin: 1rem 0;
+}
+
+.verticalCard {
+  width: 70%;
+  background-color: rgb(201, 197, 193);
+  height: fit-content;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+}
+.verticalCardImg {
+  width: 25%;
+  height: 75px;
+  background-image: url("../../assets/images/F1BG.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border-radius: 0.5rem;
+}
+
+.verticalCardTitle {
+  margin-left: 1rem;
+  font-size: 20px;
+}

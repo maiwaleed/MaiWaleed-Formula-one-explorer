@@ -4,8 +4,8 @@ import { Navbar } from "../components/Navbar/Navbar";
 export const RaceDetails = () => {
   return (
     <>
-      <div>RaceDetails</div>;
       <Navbar />
+      <div>RaceDetails</div>;
     </>
   );
 };

@@ -1,40 +1,33 @@
-import React, { useState } from "react";
 import { Navbar } from "../components/Navbar/Navbar";
 import useSeasonDetailsInfo from "../api/seasonListing";
-import { Card } from "../components/Card/Card";
+import { SeasonCard } from "../components/Card/SeasonCard";
+import { Pagination } from "../components/Pagination/Pagination";
+import { useSeasonListingStore } from "../store/seasonListingStore";
+import { useState } from "react";
 
 export const SeasonListing = () => {
-  const { seasonInfo, loading, isPlaceholderData } = useSeasonDetailsInfo(1);
-  // create state to switch between list and card view
+  const { totalPageCount, currentPage } = useSeasonListingStore();
+  const { seasonInfo, loading } = useSeasonDetailsInfo(currentPage - 1 ?? 0);
   //create card component
-  //pagination ?? separate component?????
-  //zustand store
+
   //! show loading state via specific component
 
-  console.log(isPlaceholderData);
-  const [page, setPage] = useState(1);
-
+  const [isListView, setIsListView] = useState(false);
   return (
     <>
       <Navbar />
-      <h1>SeasonListing</h1>
-      <h2>card vs list view</h2>
+      <h1 style={{ padding: "1rem" }}>SeasonListing</h1>
+
+      <div>
+        <button onClick={() => setIsListView(false)}>Card</button>
+        <button onClick={() => setIsListView(true)}>List</button>
+      </div>
+
       {loading && "loading"}
       {!loading && (
         <>
-          <Card cardContent={seasonInfo} />{" "}
-          <button
-            onClick={() => setPage((prev) => prev - 1)}
-            disabled={page == 0 ? true : false}
-          >
-            Prev Page
-          </button>
-          <button
-            onClick={() => setPage((prev) => prev + 1)}
-            disabled={page == 5 ? true : false}
-          >
-            Next Page
-          </button>
+          <SeasonCard cardContent={seasonInfo} isListView={isListView} />
+          <Pagination />
         </>
       )}
     </>

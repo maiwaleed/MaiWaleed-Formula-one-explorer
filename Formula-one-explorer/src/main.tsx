@@ -10,9 +10,12 @@ import { RacesForASeason } from "./pages/RacesForASeason.tsx";
 
 const queryClient = new QueryClient();
 /** Route strings */
+
+export const CircuitsRoute: string = "/circuits";
+export const DriversRoute: string = "/drivers";
 export const SeasonListingRoute: string = "/season-listing";
-export const RacesForASeasonRoute: string = "/races-for-season";
-export const RaceDetailsRoute: string = "/race-details";
+export const RacesForASeasonRoute: string = "/season-listing/:seasonId";
+export const RaceDetailsRoute: string = "/race-details"; //to be updated
 
 const router = createBrowserRouter([
   {
@@ -35,16 +38,15 @@ const router = createBrowserRouter([
     element: <RaceDetails />,
     errorElement: <App />,
   },
+  { path: RaceDetailsRoute, element: <RaceDetails />, errorElement: <App /> },
 ]);
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      {/* <RouterProvider router={router} /> */}
-      {/* 
+  <QueryClientProvider client={queryClient}>
+    {/* <RouterProvider router={router} /> */}
+    {/* 
       <App />
       <RoutesComponent /> */}
-      <RouterProvider router={router} />
-    </QueryClientProvider>
-  </StrictMode>
+    <RouterProvider router={router} />
+  </QueryClientProvider>
 );
