@@ -17,7 +17,7 @@ export const SeasonCard = (props: any) => {
               className={`${isListView ? "verticalCardImg" : "cardImg"}`}
             ></div>
             <Link
-              to={`/season-listing/${season.season}`}
+              to={`/season-listing/${season.season}/races`}
               className={`${isListView ? "verticalCardTitle" : "cardTitle"}`}
             >
               {season.season}

@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useSeasonListingStore } from "../store/seasonListingStore";
 import { useEffect } from "react";
+import { useRaceForASeasonStore } from "../store/raceForASeasonStore";
 
 let pagesCount: number; //!move to store
 
@@ -14,7 +14,7 @@ export const getRaceForASeason = async (seasonId: number, offset: number) => {
 };
 
 const useRaceForASeasonInfo = (seasonId: number, offset: number) => {
-  const { setTotalPageCount, currentPage } = useSeasonListingStore();
+  const { setTotalPageCount, currentPage } = useRaceForASeasonStore();
 
   const {
     data: raceForASeason,

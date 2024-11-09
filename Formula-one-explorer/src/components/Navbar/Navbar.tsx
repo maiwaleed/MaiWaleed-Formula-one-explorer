@@ -1,9 +1,5 @@
 import "./navbar.css";
-import {
-  SeasonListingRoute,
-  RacesForASeasonRoute,
-  RaceDetailsRoute,
-} from "../../main";
+import { SeasonListingRoute, CircuitsRoute, StatusRoute } from "../../main";
 import { Link } from "react-router-dom";
 export const Navbar = () => {
   return (
@@ -18,10 +14,10 @@ export const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link to={RacesForASeasonRoute}>Races for a Season</Link>
+          <Link to={CircuitsRoute}>Circuits</Link>
         </li>
         <li>
-          <Link to={RaceDetailsRoute}>Race Details</Link>
+          <Link to={StatusRoute}>Race Status</Link>
         </li>
       </ul>
     </div>

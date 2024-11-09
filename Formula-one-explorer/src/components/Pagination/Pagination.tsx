@@ -1,10 +1,7 @@
-import useSeasonDetailsInfo from "../../api/seasonListing";
-import { useSeasonListingStore } from "../../store/seasonListingStore";
+export const Pagination = (props: any) => {
+  const { currentPage, next, totalPageCount, setCurrentPage, prev, refetch } =
+    props;
 
-export const Pagination = () => {
-  const { currentPage, next, totalPageCount, setCurrentPage, prev } =
-    useSeasonListingStore();
-  const { refetch } = useSeasonDetailsInfo(1); // change 1 to currentPage??
   // Generate page buttons
   const pageButtons = Array.from(
     { length: totalPageCount ?? 1 },

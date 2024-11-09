@@ -11,7 +11,7 @@
 
 .card {
   width: 30%;
-  background-color: rgb(201, 197, 193);
+  background-color: white;
   height: 200px;
   display: flex;
   flex-direction: column;
@@ -33,11 +33,15 @@
 }
 
 .cardTitle {
+  color: black;
+}
+.cardTitle:hover {
+  color: #e10600;
 }
 
 .verticalCard {
   width: 50%;
-  background-color: rgb(201, 197, 193);
+  background-color: white;
   height: 70px;
   display: flex;
   justify-content: flex-start;
@@ -59,4 +63,9 @@
 .verticalCardTitle {
   margin-left: 1rem;
   font-size: 20px;
+  color: black;
+}
+
+.verticalCardTitle:hover {
+  color: #e10600;
 }

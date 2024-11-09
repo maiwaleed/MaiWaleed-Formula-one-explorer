@@ -10,9 +10,9 @@
 }
 
 .card {
-  width: 30%;
-  background-color: rgb(201, 197, 193);
-  height: 250px;
+  width: 27%;
+  background-color: white;
+  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,6 +21,7 @@
   padding: 1rem 0.5rem;
   margin-bottom: 1rem;
   border-radius: 1rem;
+  position: relative;
 }
 
 .cardImg {
@@ -33,6 +34,11 @@
 }
 
 .cardTitle {
+  color: black;
+}
+
+.cardTitle:hover {
+  color: #e10600;
 }
 
 .cardHeader {
@@ -45,7 +51,7 @@
 
 .verticalCard {
   width: 70%;
-  background-color: rgb(201, 197, 193);
+  background-color: white;
   height: fit-content;
   display: flex;
   justify-content: flex-start;
@@ -54,6 +60,7 @@
   padding: 1rem 0.5rem;
   margin-bottom: 1rem;
   border-radius: 1rem;
+  position: relative;
 }
 .verticalCardImg {
   width: 25%;
@@ -67,4 +74,9 @@
 .verticalCardTitle {
   margin-left: 1rem;
   font-size: 20px;
+  color: black;
+}
+
+.verticalCardTitle:hover {
+  color: #e10600;
 }

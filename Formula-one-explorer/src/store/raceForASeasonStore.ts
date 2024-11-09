@@ -7,6 +7,8 @@ type Store = {
   prev: () => void;
   currentPage: number;
   setCurrentPage: (currentPage: number) => void;
+  racesList?: any;
+  setRacesList: (racesList: any) => void;
 };
 
 export const useRaceForASeasonStore = create<Store>()((set, get) => ({
@@ -34,5 +36,11 @@ export const useRaceForASeasonStore = create<Store>()((set, get) => ({
     set((state) => ({
       ...state,
       currentPage: currentPage,
+    })),
+
+  setRacesList: (racesList) =>
+    set((state) => ({
+      ...state,
+      racesList: racesList,
     })),
 }));

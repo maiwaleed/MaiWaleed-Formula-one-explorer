@@ -6,8 +6,11 @@ import { useSeasonListingStore } from "../store/seasonListingStore";
 import { useState } from "react";
 
 export const SeasonListing = () => {
-  const { totalPageCount, currentPage } = useSeasonListingStore();
-  const { seasonInfo, loading } = useSeasonDetailsInfo(currentPage - 1 ?? 0);
+  const { totalPageCount, currentPage, next, setCurrentPage, prev } =
+    useSeasonListingStore();
+  const { seasonInfo, loading, refetch } = useSeasonDetailsInfo(
+    currentPage - 1 ?? 0
+  );
   //create card component
 
   //! show loading state via specific component
@@ -16,7 +19,7 @@ export const SeasonListing = () => {
   return (
     <>
       <Navbar />
-      <h1 style={{ padding: "1rem" }}>SeasonListing</h1>
+      <h1 style={{ padding: "1rem" }}>Season Listing</h1>
 
       <div>
         <button onClick={() => setIsListView(false)}>Card</button>
@@ -27,7 +30,14 @@ export const SeasonListing = () => {
       {!loading && (
         <>
           <SeasonCard cardContent={seasonInfo} isListView={isListView} />
-          <Pagination />
+          <Pagination
+            currentPage={currentPage}
+            next={next}
+            totalPageCount={totalPageCount}
+            setCurrentPage={setCurrentPage}
+            prev={prev}
+            refetch={refetch}
+          />
         </>
       )}
     </>

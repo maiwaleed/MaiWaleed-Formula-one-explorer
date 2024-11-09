@@ -12,9 +12,9 @@ const queryClient = new QueryClient();
 /** Route strings */
 
 export const CircuitsRoute: string = "/circuits";
-export const DriversRoute: string = "/drivers";
+export const StatusRoute: string = "/status";
 export const SeasonListingRoute: string = "/season-listing";
-export const RacesForASeasonRoute: string = "/season-listing/:seasonId";
+export const RacesForASeasonRoute: string = "/season-listing/:seasonId/races";
 export const RaceDetailsRoute: string = "/race-details"; //to be updated
 
 const router = createBrowserRouter([
@@ -38,7 +38,8 @@ const router = createBrowserRouter([
     element: <RaceDetails />,
     errorElement: <App />,
   },
-  { path: RaceDetailsRoute, element: <RaceDetails />, errorElement: <App /> },
+  { path: CircuitsRoute, element: <App />, errorElement: <App /> }, //!Create separate pages
+  { path: StatusRoute, element: <App />, errorElement: <App /> },
 ]);
 
 createRoot(document.getElementById("root")!).render(

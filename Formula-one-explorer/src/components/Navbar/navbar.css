@@ -5,7 +5,7 @@
   position: relative;
   top: 10%;
   z-index: 9999 !important;
-  background-color: #d3d3d3;
+  background-color: #e10600;
   display: flex;
   border-radius: 40px;
   margin: auto;
@@ -25,17 +25,17 @@
 }
 a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 a:hover {
   cursor: pointer;
-  color: crimson;
+  color: black;
 }
 a.active {
-  color: crimson;
+  color: black;
 }
 .siteTitle:hover {
-  color: navy;
+  color: black;
 }
 
 .navContainer ul {
