@@ -2,14 +2,21 @@ import { useParams } from "react-router";
 import { Navbar } from "../components/Navbar/Navbar";
 import useRaceForASeasonInfo from "../api/raceForASeason";
 import { Pagination } from "../components/Pagination/Pagination";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RaceDetailsCard } from "../components/Card/RaceDetailsCard";
-import { useRaceForASeasonStore } from "../store/raceForASeasonStore";
+import { RaceCard, useRaceForASeasonStore } from "../store/raceForASeasonStore";
 
 export const RacesForASeason = () => {
   const { seasonId } = useParams();
-  const { totalPageCount, currentPage, next, setCurrentPage, prev } =
-    useRaceForASeasonStore();
+  const {
+    totalPageCount,
+    currentPage,
+    next,
+    setCurrentPage,
+    prev,
+    setRacesList,
+    racesList,
+  } = useRaceForASeasonStore();
   const { raceForASeason, loading, refetch } = useRaceForASeasonInfo(
     +seasonId!,
     1
@@ -17,6 +24,16 @@ export const RacesForASeason = () => {
   const [isListView, setIsListView] = useState(false);
 
   console.log(raceForASeason);
+  useEffect(() => {
+    //!
+    //place the setter in a useeffect with no dependencies and if condition, in case there is no key in the localstorage with the specific year then set the value in the store
+    !loading &&
+      setRacesList(
+        raceForASeason.map((race: RaceCard) => ({ ...race, pinned: false }))
+      );
+    //!
+  }, [loading]);
+
   //!pin races and show them first in the list
   return (
     <>
@@ -31,7 +48,7 @@ export const RacesForASeason = () => {
       {!loading && (
         <>
           <RaceDetailsCard
-            cardContent={raceForASeason}
+            cardContent={racesList ?? raceForASeason}
             isListView={isListView}
           />
           <Pagination

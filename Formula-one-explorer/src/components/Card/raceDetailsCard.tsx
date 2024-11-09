@@ -3,14 +3,18 @@ import "./raceDetailsCard.css";
 import { formatDate } from "../../utils/dateConverter";
 import { FaLockOpen } from "react-icons/fa6";
 import { FaLock } from "react-icons/fa6";
+import {
+  RaceCard,
+  useRaceForASeasonStore,
+} from "../../store/raceForASeasonStore";
 
 export const RaceDetailsCard = (props: any) => {
   const { cardContent, isListView } = props;
-
+  const { togglePinned } = useRaceForASeasonStore();
   return (
     <div className="cardContainer">
       {cardContent.length > 0 &&
-        cardContent.map((race: any, index: number) => (
+        cardContent.map((race: RaceCard, index: number) => (
           <div
             key={index}
             className={`${isListView ? "verticalCard" : "card"}`}
@@ -21,7 +25,7 @@ export const RaceDetailsCard = (props: any) => {
             ></div>
             <div className="cardHeader">
               <span>Race name:{race.raceName}</span>
-              <span>circuit name:{race.circuitName}</span>
+              <span>circuit name:{race.Circuit.circuitName}</span>
               <span>date:{formatDate(race.date)}</span>
             </div>
             <Link
@@ -38,9 +42,9 @@ export const RaceDetailsCard = (props: any) => {
                 left: "0",
                 padding: "0.5em",
               }}
+              onClick={() => togglePinned(index)}
             >
-              {" "}
-              <FaLockOpen size={20} />
+              {race.pinned ? <FaLock size={20} /> : <FaLockOpen size={20} />}
             </button>
           </div>
         ))}

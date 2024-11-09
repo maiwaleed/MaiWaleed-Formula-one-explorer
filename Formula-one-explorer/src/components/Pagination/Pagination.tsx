@@ -7,9 +7,8 @@ export const Pagination = (props: any) => {
     { length: totalPageCount ?? 1 },
     (_, index) => index + 1
   );
-  console.log(pageButtons);
+
   const handlePageClick = (e: any) => {
-    console.log(e);
     setCurrentPage(+e.target.ariaLabel); // Update current page
     refetch(); // Optionally, trigger a fetch request based on the selected page
   };
@@ -20,7 +19,7 @@ export const Pagination = (props: any) => {
           onClick={() => {
             prev();
           }}
-          disabled={currentPage == 0 ? true : false}
+          disabled={currentPage == 1 ? true : false}
         >
           Prev Page
         </button>
@@ -42,7 +41,7 @@ export const Pagination = (props: any) => {
 
         <button
           onClick={() => next()}
-          disabled={currentPage == 5 ? true : false}
+          disabled={currentPage == totalPageCount ? true : false}
         >
           Next Page
         </button>
