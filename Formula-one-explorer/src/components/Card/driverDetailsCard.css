@@ -1,14 +1,23 @@
+.outer-container {
+  margin: 2rem auto;
+  width: 85%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .item-container {
   -ms-flex-preferred-size: calc(33.33333% - 30px);
   flex-basis: calc(33.33333% - 30px);
   margin: 0 15px 30px;
-  width: 30%;
+  width: 45%;
   overflow: hidden;
   border-radius: 28px;
 }
 .item-link {
-  display: block;
-  padding: 1.5rem 1rem;
+  padding: 1.5rem 1.25rem;
   background-color: #121212;
   overflow: hidden;
   position: relative;

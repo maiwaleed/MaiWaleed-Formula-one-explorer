@@ -5,9 +5,7 @@ import { DriverDetailsCard } from "../components/Card/DriverDetailsCard";
 
 export const RaceDetails = () => {
   const { seasonId, round } = useParams();
-  const { raceDetails } = useRaceDetailsInfo(+seasonId!, +round!);
-  console.log(seasonId, round);
-  console.log(raceDetails?.sort((a: any, b: any) => a.position - b.position));
+  const { raceDetails, loading } = useRaceDetailsInfo(+seasonId!, +round!);
 
   return (
     <>
@@ -16,7 +14,9 @@ export const RaceDetails = () => {
 
       <h2>section1: Participating Drivers</h2>
 
-      <DriverDetailsCard />
+      {!loading && raceDetails && (
+        <DriverDetailsCard raceDetails={raceDetails} />
+      )}
 
       <h2>section2: Performance Visualization</h2>
     </>

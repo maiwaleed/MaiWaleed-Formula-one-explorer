@@ -23,7 +23,6 @@ export const RacesForASeason = () => {
   );
   const [isListView, setIsListView] = useState(false);
 
-  console.log(raceForASeason);
   useEffect(() => {
     //!
     //place the setter in a useeffect with no dependencies and if condition, in case there is no key in the localstorage with the specific year then set the value in the store
