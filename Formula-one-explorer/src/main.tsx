@@ -15,7 +15,8 @@ export const CircuitsRoute: string = "/circuits";
 export const StatusRoute: string = "/status";
 export const SeasonListingRoute: string = "/season-listing";
 export const RacesForASeasonRoute: string = "/season-listing/:seasonId/races";
-export const RaceDetailsRoute: string = "/race-details"; //to be updated
+export const RaceDetailsRoute: string =
+  "/season-listing/:seasonId/:round/results";
 
 const router = createBrowserRouter([
   {

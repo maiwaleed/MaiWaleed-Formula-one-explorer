@@ -29,8 +29,7 @@ export const RaceDetailsCard = (props: any) => {
               <span>date:{formatDate(race.date)}</span>
             </div>
             <Link
-              aria-label={`${race.season}-${race.round}`}
-              to={`/season-listing/${race.season}`}
+              to={`/season-listing/${race.season}/${race.round}/results`}
               className={`${isListView ? "verticalCardTitle" : "cardTitle"}`}
             >
               Drivers Info

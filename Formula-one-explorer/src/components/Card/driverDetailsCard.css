@@ -1,0 +1,114 @@
+.item-container {
+  -ms-flex-preferred-size: calc(33.33333% - 30px);
+  flex-basis: calc(33.33333% - 30px);
+  margin: 0 15px 30px;
+  width: 30%;
+  overflow: hidden;
+  border-radius: 28px;
+}
+.item-link {
+  display: block;
+  padding: 1.5rem 1rem;
+  background-color: #121212;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.item-link:hover,
+.item-link:hover .item-details {
+  text-decoration: none;
+  color: #fff;
+}
+.item-link:hover .item-bg {
+  -webkit-transform: scale(10);
+  -ms-transform: scale(10);
+  transform: scale(10);
+}
+.item-name {
+  margin: 0 0 0.5rem;
+  overflow: hidden;
+  font-weight: bold;
+  font-size: 25px;
+  color: #fff;
+  z-index: 2;
+  position: relative;
+}
+
+.info-container {
+  font-size: 18px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  z-index: 2;
+  position: relative;
+}
+
+.item-details {
+  font-weight: bold;
+  color: #f9b234;
+  -webkit-transition: color 0.5s ease;
+  -o-transition: color 0.5s ease;
+  transition: color 0.5s ease;
+}
+
+.item-bg {
+  height: 128px;
+  width: 128px;
+  background-color: #f9b234;
+  z-index: 1;
+  position: absolute;
+  top: -75px;
+  right: -75px;
+  border-radius: 50%;
+  -webkit-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.driver_rank {
+  z-index: 1;
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-size: 1rem;
+  -webkit-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.item-container .item-bg {
+  background-color: #e44002;
+}
+
+@media only screen and (max-width: 979px) {
+  .item-container {
+    -ms-flex-preferred-size: calc(50% - 30px);
+    flex-basis: calc(50% - 30px);
+  }
+  .item-name {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (max-width: 639px) {
+  .item-container {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+  }
+  .item-name {
+    min-height: 72px;
+    line-height: 1;
+
+    font-size: 24px;
+  }
+  .item-link {
+    padding: 22px 40px;
+  }
+  .info-container {
+    font-size: 16px;
+  }
+}

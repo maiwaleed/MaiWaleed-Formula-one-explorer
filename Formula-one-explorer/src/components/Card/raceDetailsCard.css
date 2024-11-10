@@ -22,6 +22,11 @@
   margin-bottom: 1rem;
   border-radius: 1rem;
   position: relative;
+  transition: all 0.5s ease; /* Transition for all properties */
+}
+
+.card:hover {
+  background-color: cornsilk;
 }
 
 .cardImg {
@@ -61,7 +66,12 @@
   margin-bottom: 1rem;
   border-radius: 1rem;
   position: relative;
+  transition: all 0.5s ease; /* Transition for all properties */
 }
+.verticalCard:hover {
+  background-color: cornsilk;
+}
+
 .verticalCardImg {
   width: 25%;
   height: 75px;
