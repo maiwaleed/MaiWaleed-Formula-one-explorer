@@ -11,7 +11,6 @@ export const SeasonListing = () => {
   const { seasonInfo, loading, refetch } = useSeasonDetailsInfo(
     currentPage - 1 ?? 0
   );
-  //create card component
 
   //! show loading state via specific component
 

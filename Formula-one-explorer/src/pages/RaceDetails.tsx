@@ -2,7 +2,7 @@ import { Navbar } from "../components/Navbar/Navbar";
 import { useParams } from "react-router-dom";
 import useRaceDetailsInfo from "../api/raceDetails";
 import { DriverDetailsCard } from "../components/Card/DriverDetailsCard";
-import { Bar, BarDatum } from "@nivo/bar";
+import { Bar } from "@nivo/bar";
 
 interface RaceData {
   number: string;
@@ -28,11 +28,6 @@ interface RaceData {
   status: string;
 }
 
-interface MappedRaceData extends BarDatum {
-  driverName: string;
-  laps: number;
-}
-
 export const RaceDetails = () => {
   const { seasonId, round } = useParams();
   const { raceDetails, loading } = useRaceDetailsInfo(+seasonId!, +round!);
@@ -44,12 +39,6 @@ export const RaceDetails = () => {
     driverName: item.Driver.givenName + " " + item.Driver.familyName,
     laps: +item.laps, // Laps count
   }));
-
-  const data = [
-    { driverName: "Johnnie Parsons", laps: 200 },
-    { driverName: "Joe James", laps: 210 },
-    { driverName: "Bill Schindler", laps: 205 },
-  ];
 
   return (
     <>
@@ -67,7 +56,6 @@ export const RaceDetails = () => {
       </h2>
 
       <div style={{ height: 300 }}>
-        {/* {data.map((datum) => ( */}
         {mappedData && (
           <Bar
             key={"driverName"}
@@ -92,11 +80,17 @@ export const RaceDetails = () => {
               legend: "Driver Name",
               legendPosition: "middle",
               legendOffset: 80,
-            }} // axisLeft={}
-            // axisBottom={}
+            }}
+            axisLeft={{
+              tickSize: 5,
+              tickPadding: 5,
+              tickRotation: 0,
+              legend: "Laps",
+              legendPosition: "middle",
+              legendOffset: -40,
+            }}
           />
         )}
-        {/* // ))} */}
       </div>
     </>
   );

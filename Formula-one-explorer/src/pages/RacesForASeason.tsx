@@ -33,7 +33,6 @@ export const RacesForASeason = () => {
     //!
   }, [loading]);
 
-  //!pin races and show them first in the list
   return (
     <>
       <Navbar />

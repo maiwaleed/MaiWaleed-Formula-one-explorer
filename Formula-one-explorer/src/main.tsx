@@ -45,10 +45,6 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <QueryClientProvider client={queryClient}>
-    {/* <RouterProvider router={router} /> */}
-    {/* 
-      <App />
-      <RoutesComponent /> */}
     <RouterProvider router={router} />
   </QueryClientProvider>
 );
