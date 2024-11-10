@@ -5,7 +5,6 @@ export const DriverDetailsCard = (props: any) => {
   return (
     <div className="outer-container">
       {raceDetails.map((driver: any, index: number) => {
-        console.log(driver);
         return (
           <div className="item-container" key={index}>
             <a href="#" className="item-link">

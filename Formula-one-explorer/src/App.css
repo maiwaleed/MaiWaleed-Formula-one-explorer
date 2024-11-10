@@ -25,4 +25,5 @@
   padding: 2rem;
   text-align: center;
   background-color: #ededed;
+  overflow-y: auto;
 }
