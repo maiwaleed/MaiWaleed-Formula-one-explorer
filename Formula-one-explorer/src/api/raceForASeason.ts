@@ -6,11 +6,19 @@ import { useRaceForASeasonStore } from "../store/raceForASeasonStore";
 let pagesCount: number; //!move to store
 
 export const getRaceForASeason = async (seasonId: number, offset: number) => {
-  const { data } = await axios.get<any>(
-    `https://api.jolpi.ca/ergast/f1/${seasonId}/races/?offset=${30 * offset}`
-  );
-  pagesCount = Math.ceil(data.MRData.total / data.MRData.limit);
-  return data.MRData.RaceTable.Races;
+  try {
+    const { data } = await axios.get<any>(
+      `https://api.jolpi.ca/ergast/f1/${seasonId}/races/?offset=${30 * offset}`
+    );
+    pagesCount = Math.ceil(data.MRData.total / data.MRData.limit);
+    return data.MRData.RaceTable.Races;
+  } catch (error: any) {
+    // Handle network or API errors here
+    throw new Error(
+      "Failed to fetch races for the season: " +
+        (error.message || "Unknown error")
+    );
+  }
 };
 
 const useRaceForASeasonInfo = (seasonId: number, offset: number) => {

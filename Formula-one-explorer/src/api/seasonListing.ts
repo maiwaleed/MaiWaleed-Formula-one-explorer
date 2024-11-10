@@ -5,12 +5,21 @@ import { useEffect } from "react";
 
 let pagesCount: number; //!move to store
 
+// Fetching the season listing with error handling
 export const getSeasonListing = async (offset: number) => {
-  const { data } = await axios.get<any>(
-    `https://api.jolpi.ca/ergast/f1/seasons/?offset=${30 * offset}` //off+1 ??
-  );
-  pagesCount = Math.ceil(data.MRData.total / data.MRData.limit);
-  return data.MRData.SeasonTable.Seasons;
+  try {
+    const { data } = await axios.get<any>(
+      `https://api.jolpi.ca/ergast/f1/seasons/?offset=${30 * offset}`
+    );
+
+    pagesCount = Math.ceil(data.MRData.total / data.MRData.limit);
+    return data.MRData.SeasonTable.Seasons;
+  } catch (error: any) {
+    // Handle network or API errors here
+    throw new Error(
+      "Failed to fetch season listing: " + (error.message || "Unknown error")
+    );
+  }
 };
 
 const useSeasonDetailsInfo = (offset: number) => {
