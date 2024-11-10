@@ -1,0 +1,22 @@
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+}
+
+.react-logo {
+  font-size: 4rem; /* Size of the React logo */
+  color: #61dafb; /* React logo color */
+  animation: rotate 2s linear infinite; /* Apply the rotation animation */
+}
+
+/* CSS animation for rotating the icon */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

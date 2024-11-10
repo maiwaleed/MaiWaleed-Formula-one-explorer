@@ -1,0 +1,16 @@
+.loader-container-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.react-logo-error {
+  font-size: 4rem; /* Size of the React logo */
+  color: red; /* React logo color */
+}
+
+.error-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

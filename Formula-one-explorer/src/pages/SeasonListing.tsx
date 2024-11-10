@@ -4,15 +4,15 @@ import { SeasonCard } from "../components/Card/SeasonCard";
 import { Pagination } from "../components/Pagination/Pagination";
 import { useSeasonListingStore } from "../store/seasonListingStore";
 import { useState } from "react";
+import LoadingPage from "./LoadingPage";
+import ErrorPage from "./ErrorPage";
 
 export const SeasonListing = () => {
   const { totalPageCount, currentPage, next, setCurrentPage, prev } =
     useSeasonListingStore();
-  const { seasonInfo, loading, refetch } = useSeasonDetailsInfo(
+  const { seasonInfo, loading, refetch, error } = useSeasonDetailsInfo(
     currentPage - 1 ?? 0
   );
-
-  //! show loading state via specific component
 
   const [isListView, setIsListView] = useState(false);
   return (
@@ -20,14 +20,19 @@ export const SeasonListing = () => {
       <Navbar />
       <h1 style={{ padding: "1rem" }}>Season Listing</h1>
 
-      <div>
-        <button onClick={() => setIsListView(false)}>Card</button>
-        <button onClick={() => setIsListView(true)}>List</button>
-      </div>
-
-      {loading && "loading"}
+      {loading && <LoadingPage />}
+      {error && <ErrorPage />}
       {!loading && (
         <>
+          <div style={{ padding: "1rem" }}>
+            <button
+              style={{ marginRight: "1rem" }}
+              onClick={() => setIsListView(false)}
+            >
+              Card
+            </button>
+            <button onClick={() => setIsListView(true)}>List</button>
+          </div>
           <SeasonCard cardContent={seasonInfo} isListView={isListView} />
           <Pagination
             currentPage={currentPage}

@@ -5,6 +5,8 @@ import { Pagination } from "../components/Pagination/Pagination";
 import { useEffect, useState } from "react";
 import { RaceDetailsCard } from "../components/Card/RaceDetailsCard";
 import { RaceCard, useRaceForASeasonStore } from "../store/raceForASeasonStore";
+import LoadingPage from "./LoadingPage";
+import ErrorPage from "./ErrorPage";
 
 export const RacesForASeason = () => {
   const { seasonId } = useParams();
@@ -17,7 +19,7 @@ export const RacesForASeason = () => {
     setRacesList,
     racesList,
   } = useRaceForASeasonStore();
-  const { raceForASeason, loading, refetch } = useRaceForASeasonInfo(
+  const { raceForASeason, loading, refetch, error } = useRaceForASeasonInfo(
     +seasonId!,
     1
   );
@@ -27,6 +29,7 @@ export const RacesForASeason = () => {
     //!
     //place the setter in a useeffect with no dependencies and if condition, in case there is no key in the localstorage with the specific year then set the value in the store
     !loading &&
+      !error &&
       setRacesList(
         raceForASeason.map((race: RaceCard) => ({ ...race, pinned: false }))
       );
@@ -37,14 +40,20 @@ export const RacesForASeason = () => {
     <>
       <Navbar />
       <h1 style={{ padding: "1rem" }}>Races For A Season</h1>
-      <div>
-        <button onClick={() => setIsListView(false)}>Card</button>
-        <button onClick={() => setIsListView(true)}>List</button>
-      </div>
 
-      {loading && "loading"}
-      {!loading && (
+      {loading && <LoadingPage />}
+      {error && <ErrorPage />}
+      {!loading && !error && (
         <>
+          <div style={{ padding: "1rem" }}>
+            <button
+              style={{ marginRight: "1rem" }}
+              onClick={() => setIsListView(false)}
+            >
+              Card
+            </button>
+            <button onClick={() => setIsListView(true)}>List</button>
+          </div>
           <RaceDetailsCard
             cardContent={racesList ?? raceForASeason}
             isListView={isListView}
