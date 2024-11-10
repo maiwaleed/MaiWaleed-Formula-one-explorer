@@ -5,10 +5,10 @@ export interface RaceCard {
   round: string;
   url: string;
   raceName: string;
-  Circuit: {
-    circuitId: string;
+  Circuit?: {
+    circuitId?: string;
     url: string;
-    circuitName: string;
+    circuitName?: string;
     Location: {
       lat: string;
       long: string;
@@ -33,8 +33,6 @@ type Store = {
   togglePinned: (index: number) => void;
   season?: string;
   setSeason: (season: string) => void;
-  round?: string;
-  setRound: (round: string) => void;
 };
 
 export const useRaceForASeasonStore = create<Store>()((set, get) => ({
@@ -73,12 +71,6 @@ export const useRaceForASeasonStore = create<Store>()((set, get) => ({
       ...state,
       season: season,
     })),
-  setRound: (round) =>
-    set((state) => ({
-      ...state,
-      round: round,
-    })),
-
   togglePinned: (index: number) =>
     set((state) => {
       const updatedRaceCards = [...(state.racesList as RaceCard[])];
@@ -91,10 +83,7 @@ export const useRaceForASeasonStore = create<Store>()((set, get) => ({
         return 0; // no change
       });
       //local storage
-      localStorage.setItem(
-        `racesList-${get().season}-${get().round}`,
-        JSON.stringify(updatedRaceCards)
-      );
+      localStorage.setItem(`${get().season}`, JSON.stringify(updatedRaceCards));
 
       // Update the state with the new order
       return { racesList: updatedRaceCards };

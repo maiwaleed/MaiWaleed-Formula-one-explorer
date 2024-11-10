@@ -11,10 +11,9 @@ import { useEffect } from "react";
 
 export const RaceDetailsCard = (props: any) => {
   const { cardContent, isListView } = props;
-  const { togglePinned, setRound, setSeason } = useRaceForASeasonStore();
+  const { togglePinned, setSeason } = useRaceForASeasonStore();
 
   useEffect(() => {
-    setRound(cardContent[0].round);
     setSeason(cardContent[0].season);
   }, [cardContent]);
 
@@ -32,7 +31,7 @@ export const RaceDetailsCard = (props: any) => {
             ></div>
             <div className="cardHeader">
               <span>Race name:{race.raceName}</span>
-              <span>circuit name:{race.Circuit.circuitName}</span>
+              <span>circuit name:{race.Circuit!.circuitName}</span>
               <span>date:{formatDate(race.date)}</span>
             </div>
             <Link

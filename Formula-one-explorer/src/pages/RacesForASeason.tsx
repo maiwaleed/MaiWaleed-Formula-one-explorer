@@ -23,18 +23,36 @@ export const RacesForASeason = () => {
     +seasonId!,
     1
   );
+
   const [isListView, setIsListView] = useState(false);
+  const [preExistingKey, setPreExistingKey] = useState(true);
+  useEffect(() => {
+    setPreExistingKey(Object.keys(localStorage).includes(seasonId as string));
+  }, []);
 
   useEffect(() => {
-    //!
-    //place the setter in a useeffect with no dependencies and if condition, in case there is no key in the localstorage with the specific year then set the value in the store
-    !loading &&
-      !error &&
-      setRacesList(
-        raceForASeason.map((race: RaceCard) => ({ ...race, pinned: false }))
+    if (preExistingKey) {
+      const localStorageData = Object.fromEntries(
+        Array.from({ length: localStorage.length }, (_, i) => [
+          localStorage.key(i),
+          JSON.parse(localStorage.getItem(localStorage.key(i)!)!),
+        ])
       );
-    //!
-  }, [loading]);
+
+      const findKeyValue = (key: string) =>
+        Object.entries(localStorageData).filter((k) => k[0] === key);
+
+      const value = findKeyValue(seasonId as string)[0];
+
+      value && setRacesList(value![1] as RaceCard[]);
+    } else {
+      if (preExistingKey === false && !loading && !error) {
+        setRacesList(
+          raceForASeason.map((race: RaceCard) => ({ ...race, pinned: false }))
+        );
+      }
+    }
+  }, [loading, preExistingKey]);
 
   return (
     <>
