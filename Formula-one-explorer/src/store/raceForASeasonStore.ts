@@ -31,6 +31,10 @@ type Store = {
   racesList?: RaceCard[];
   setRacesList: (racesList: RaceCard[]) => void;
   togglePinned: (index: number) => void;
+  season?: string;
+  setSeason: (season: string) => void;
+  round?: string;
+  setRound: (round: string) => void;
 };
 
 export const useRaceForASeasonStore = create<Store>()((set, get) => ({
@@ -64,6 +68,16 @@ export const useRaceForASeasonStore = create<Store>()((set, get) => ({
       ...state,
       racesList: racesList,
     })),
+  setSeason: (season) =>
+    set((state) => ({
+      ...state,
+      season: season,
+    })),
+  setRound: (round) =>
+    set((state) => ({
+      ...state,
+      round: round,
+    })),
 
   togglePinned: (index: number) =>
     set((state) => {
@@ -76,6 +90,11 @@ export const useRaceForASeasonStore = create<Store>()((set, get) => ({
         if (!a.pinned && b.pinned) return 1; // b comes first
         return 0; // no change
       });
+      //local storage
+      localStorage.setItem(
+        `racesList-${get().season}-${get().round}`,
+        JSON.stringify(updatedRaceCards)
+      );
 
       // Update the state with the new order
       return { racesList: updatedRaceCards };

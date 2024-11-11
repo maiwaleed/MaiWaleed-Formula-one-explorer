@@ -7,10 +7,17 @@ import {
   RaceCard,
   useRaceForASeasonStore,
 } from "../../store/raceForASeasonStore";
+import { useEffect } from "react";
 
 export const RaceDetailsCard = (props: any) => {
   const { cardContent, isListView } = props;
-  const { togglePinned } = useRaceForASeasonStore();
+  const { togglePinned, setRound, setSeason } = useRaceForASeasonStore();
+
+  useEffect(() => {
+    setRound(cardContent[0].round);
+    setSeason(cardContent[0].season);
+  }, [cardContent]);
+
   return (
     <div className="cardContainer">
       {cardContent.length > 0 &&
